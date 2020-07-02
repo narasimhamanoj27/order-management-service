@@ -26,7 +26,7 @@ public class OrderServiceController {
 	
 	@GetMapping("/order/{id}")
 	public ResponseEntity<Order> getOrder(@PathVariable("id") final int id){
-		Order order = iOrderService.getOrderDetail();
+		Order order = iOrderService.getOrderDetail(id);
 		return new ResponseEntity<Order>(order, HttpStatus.OK);
 	}
 }

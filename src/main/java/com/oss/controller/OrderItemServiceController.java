@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.oss.api.Order;
+import com.oss.api.OrderItem;
 import com.oss.service.IOrderItemService;
 
 @RestController
@@ -18,17 +19,17 @@ public class OrderItemServiceController {
 	private IOrderItemService iOrderItemService;
 
 	@GetMapping("/orderItem")
-	public ResponseEntity<List<Order>> getAllOrderItems() {
+	public ResponseEntity<List<OrderItem>> getAllOrderItems() {
 
-		List<Order> orders = iOrderItemService.getAllOrderItems();
-		return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
+		List<OrderItem> orderItems = iOrderItemService.getAllOrderItems();
+		return new ResponseEntity<List<OrderItem>>(orderItems, HttpStatus.OK);
 	}
 
 	@GetMapping("/orderItem/{id}")
-	public ResponseEntity<Order> getOrderItem() {
+	public ResponseEntity<OrderItem> getOrderItem(@PathVariable("id") final int id) {
 
-		Order order = iOrderItemService.getOrderDetail();
-		return new ResponseEntity<Order>(order, HttpStatus.OK);
+		OrderItem orderItem = iOrderItemService.getOrderDetail(id);
+		return new ResponseEntity<OrderItem>(orderItem, HttpStatus.OK);
 	}
 
 }

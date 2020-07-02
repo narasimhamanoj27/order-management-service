@@ -8,5 +8,5 @@ public interface IOrderService {
 
 	List<Order> getAllOrderDetails();
 
-	Order getOrderDetail(); 
+	Order getOrderDetail(int id); 
 }

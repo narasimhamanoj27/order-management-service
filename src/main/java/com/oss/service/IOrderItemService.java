@@ -2,11 +2,11 @@ package com.oss.service;
 
 import java.util.List;
 
-import com.oss.api.Order;
+import com.oss.api.OrderItem;
 
 public interface IOrderItemService {
 
-	List<Order> getAllOrderItems();
+	List<OrderItem> getAllOrderItems();
 
-	Order getOrderDetail();
+	OrderItem getOrderDetail(int id);
 }
