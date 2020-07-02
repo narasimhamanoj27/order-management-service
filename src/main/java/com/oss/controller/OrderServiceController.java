@@ -18,24 +18,24 @@ import com.oss.service.IOrderService;
 @RestController
 @RequestMapping("/v1/OMS")
 public class OrderServiceController {
-	
+
 	@Autowired
 	private IOrderService iOrderService;
 
 	@GetMapping("/order")
-	public ResponseEntity<List<Orders>> getAllOrders(){
+	public ResponseEntity<List<Orders>> getAllOrders() {
 		List<Orders> orders = iOrderService.getAllOrderDetails();
 		return new ResponseEntity<List<Orders>>(orders, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/order/{id}")
-	public ResponseEntity<Orders> getOrder(@PathVariable("id") final int id){
+	public ResponseEntity<Orders> getOrder(@PathVariable("id") final int id) {
 		Orders order = iOrderService.getOrderDetail(id);
 		return new ResponseEntity<Orders>(order, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/order")
-	public ResponseEntity<?> postAllOrders(@RequestBody List<Orders> orders){
+	public ResponseEntity<?> postAllOrders(@RequestBody List<Orders> orders) {
 		iOrderService.postAllOrderDetails(orders);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

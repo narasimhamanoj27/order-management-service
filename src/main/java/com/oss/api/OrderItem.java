@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class OrderItem implements Serializable {
 
@@ -13,12 +15,16 @@ public class OrderItem implements Serializable {
 
 	@Id
 	@Column
+	@NotNull
 	private int customerId;
 	@Column
+	@NotNull
 	private String productCode;
 	@Column
+	@NotNull
 	private String productName;
 	@Column
+	@NotNull
 	private int Quantity;
 
 	

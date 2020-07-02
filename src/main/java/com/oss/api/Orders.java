@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class Orders implements Serializable {
 
@@ -14,14 +16,19 @@ public class Orders implements Serializable {
 
 	@Id
 	@Column
+	@NotNull
 	private int customerId;
 	@Column
+	@NotNull
 	private String customerName;
 	@Column
+	@NotNull
 	private Date orderDate;
 	@Column
+	@NotNull
 	private String address;
 	@Column
+	@NotNull
 	private Double total;
 
 	/**
