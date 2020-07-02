@@ -14,7 +14,7 @@ import com.oss.service.IOrderItemService;
 public class OrderItemServiceImpl implements IOrderItemService{
 
 	@Autowired
-	private OrderItemRepository orderItemRepository;
+	OrderItemRepository orderItemRepository;
 	
 	@Override
 	public List<OrderItem> getAllOrderItems() {
@@ -24,10 +24,13 @@ public class OrderItemServiceImpl implements IOrderItemService{
 	}
 
 	@Override
-	public OrderItem getOrderDetail(int id) {
-		
+	public OrderItem getOrderItemDetail(int id) {
 		return orderItemRepository.findById(id).get();
 	}
 
-	
+	@Override
+	public void postOrderItemDetail(List<OrderItem> orderItems) {
+		orderItems.forEach(orderItem -> orderItemRepository.save(orderItem));	
+	}
+
 }

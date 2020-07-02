@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,5 +32,11 @@ public class OrderServiceController {
 	public ResponseEntity<Orders> getOrder(@PathVariable("id") final int id){
 		Orders order = iOrderService.getOrderDetail(id);
 		return new ResponseEntity<Orders>(order, HttpStatus.OK);
+	}
+	
+	@PostMapping("/order")
+	public ResponseEntity<?> postAllOrders(@RequestBody List<Orders> orders){
+		iOrderService.postAllOrderDetails(orders);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

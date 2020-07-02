@@ -11,5 +11,7 @@ public interface IOrderItemService {
 
 	List<OrderItem> getAllOrderItems();
 
-	OrderItem getOrderDetail(int id);
+	OrderItem getOrderItemDetail(int id);
+	
+	void postOrderItemDetail(List<OrderItem> orderItem);
 }
