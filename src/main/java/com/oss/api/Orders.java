@@ -10,13 +10,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Order implements Serializable {
+public class Orders implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column
-	private String customerId;
+	private int customerId;
 	@Column
 	private String customerName;
 	@Column
@@ -25,6 +25,20 @@ public class Order implements Serializable {
 	private String address;
 	@Column
 	private Double total;
+
+	/**
+	 * @return the customerId
+	 */
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
 
 	/**
 	 * @return the customerName

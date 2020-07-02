@@ -1,0 +1,3 @@
+INSERT INTO ORDER VALUES (1, 'Manoj', 19/06/2020, 'Miyapur' 10.02);
+INSERT INTO ORDER VALUES (2, 'Manoj1', 20/06/2020, 'Kukatpally', 11.01);
+INSERT INTO ORDER VALUES (3, 'Manoj2', 21/06/2020, 'Kothapet', 13.08);

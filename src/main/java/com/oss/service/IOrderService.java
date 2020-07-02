@@ -2,11 +2,14 @@ package com.oss.service;
 
 import java.util.List;
 
-import com.oss.api.Order;
+import org.springframework.stereotype.Component;
 
+import com.oss.api.Orders;
+
+@Component
 public interface IOrderService {
 
-	List<Order> getAllOrderDetails();
+	List<Orders> getAllOrderDetails();
 
-	Order getOrderDetail(int id); 
+	Orders getOrderDetail(int id); 
 }

@@ -2,6 +2,7 @@ package com.oss.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import com.oss.service.IOrderItemService;
 @RequestMapping("/v1/OMS")
 public class OrderItemServiceController {
 
+	@Autowired
 	private IOrderItemService iOrderItemService;
 
 	@GetMapping("/orderItem")
