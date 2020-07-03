@@ -30,7 +30,7 @@ public class TestOrderService {
 
 	@InjectMocks
 	private OrderServiceImpl orderServiceImpl;
-	
+
 	@Mock
 	private Iterator<Orders> iterator;
 
@@ -40,7 +40,7 @@ public class TestOrderService {
 	}
 
 	@Test
-	public void testPostOrderService() throws Exception {
+	public void testPostOrderService() {
 		Date date = new Date();
 		Orders orders = new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20);
 		List<Orders> orderList = new ArrayList<Orders>();
@@ -52,17 +52,18 @@ public class TestOrderService {
 	}
 
 	@Test
-	public void testGetOrdersServiceByID() throws Exception {
+	public void testGetOrdersServiceByID() {
 		Date date = new Date();
-		Optional<Orders> ordersOptional = Optional.ofNullable(new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20));
+		Optional<Orders> ordersOptional = Optional
+				.ofNullable(new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20));
 		Mockito.when(orderRepositoryMock.findById(1)).thenReturn(ordersOptional);
 		Orders ordersActual = orderServiceImpl.getOrderDetail(1);
 		assertNotNull(ordersActual);
 		assertEquals(ordersOptional.get(), ordersActual);
 	}
-	
+
 	@Test
-	public void testGetAllOrdersService() throws Exception {
+	public void testGetAllOrdersService() {
 		Date date = new Date();
 		Orders orders = new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20);
 		List<Orders> orderList = new ArrayList<Orders>();
