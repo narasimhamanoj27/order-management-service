@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.oss.api.Orders;
 import com.oss.service.IOrderService;
 
+/**
+ * Order Service controller for GET-ALL / GET / POST functionalities
+ * @author manoj
+ *
+ */
 @RestController
 @RequestMapping("/v1")
 public class OrderServiceController {
@@ -26,6 +31,10 @@ public class OrderServiceController {
 	@Autowired
 	private IOrderService iOrderService;
 
+	/**
+	 * Controller for retrieving all the Order details from the database
+	 * @return ResponseEntity<List<Orders>>
+	 */
 	@GetMapping("/order")
 	public ResponseEntity<List<Orders>> getAllOrders() {
 		List<Orders> orders = null;
@@ -38,6 +47,11 @@ public class OrderServiceController {
 		return new ResponseEntity<List<Orders>>(orders, HttpStatus.OK);
 	}
 
+	/**
+	 * Controller for retrieving Order details based on customer Id
+	 * @param id customerId
+	 * @return ResponseEntity<Orders>
+	 */
 	@GetMapping("/order/{id}")
 	public ResponseEntity<Orders> getOrder(@PathVariable("id") final int id) {
 		Orders order = null;
@@ -51,6 +65,11 @@ public class OrderServiceController {
 		return new ResponseEntity<Orders>(order, HttpStatus.OK);
 	}
 
+	/**
+	 * Controller for saving a new record of Order details into H2 DB
+	 * @param orders
+	 * @return ResponseEntity<?>
+	 */
 	@PostMapping("/order")
 	public ResponseEntity<?> postAllOrders(@RequestBody List<Orders> orders) {
 

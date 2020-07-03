@@ -16,6 +16,9 @@ public class OrderServiceImpl implements IOrderService{
 	@Autowired
 	OrderRepository orderRepository;
 
+	/**
+	 * Implementation for retrieving all the Order details from H2 DB
+	 */
 	@Override
 	public List<Orders> getAllOrderDetails() {
 		List<Orders> orders = new ArrayList<Orders>();
@@ -23,11 +26,17 @@ public class OrderServiceImpl implements IOrderService{
 		return orders;
 	}
 
+	/**
+	 * Implementation for retrieving Order details for a given customer ID from H2 DB
+	 */
 	@Override
 	public Orders getOrderDetail(int id) {
 		return orderRepository.findById(id).get();
 	}
 	
+	/**
+	 * Implementation for saving a list of Order details in H2 DB
+	 */
 	@Override
 	public List<Orders> postAllOrderDetails(List<Orders> orders){
 		orders.forEach(order -> orderRepository.save(order));

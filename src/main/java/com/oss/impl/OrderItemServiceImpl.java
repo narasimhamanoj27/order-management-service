@@ -16,6 +16,9 @@ public class OrderItemServiceImpl implements IOrderItemService{
 	@Autowired
 	OrderItemRepository orderItemRepository;
 	
+	/**
+	 * Implementation for retrieving all the Order Item details from H2 DB
+	 */
 	@Override
 	public List<OrderItem> getAllOrderItems() {
 		List<OrderItem> orderItems = new ArrayList<OrderItem>();
@@ -23,11 +26,17 @@ public class OrderItemServiceImpl implements IOrderItemService{
 		return orderItems;
 	}
 
+	/**
+	 * Implementation for retrieving Order Item details based on customer ID from H2 DB
+	 */
 	@Override
 	public OrderItem getOrderItemDetail(int id) {
 		return orderItemRepository.findById(id).get();
 	}
 
+	/**
+	 * Implementation of saving a list of Order item details into H2 DB
+	 */
 	@Override
 	public List<OrderItem> postOrderItemDetail(List<OrderItem> orderItems) {
 		orderItems.forEach(orderItem -> orderItemRepository.save(orderItem));

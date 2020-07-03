@@ -5,6 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.oss.api.Orders;
 
+/**
+ * Repository for performing CRUD operations on Orders POJO
+ * @author manoj
+ *
+ */
 @Repository
 public interface OrderRepository extends CrudRepository<Orders, Integer>{
 
