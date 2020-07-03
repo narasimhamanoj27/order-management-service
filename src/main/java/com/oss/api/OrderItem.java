@@ -27,7 +27,17 @@ public class OrderItem implements Serializable {
 	@NotNull
 	private int Quantity;
 
-	
+	public OrderItem() {
+	}
+
+	public OrderItem(int customerId, String productCode, String productName, int quantity) {
+		super();
+		this.customerId = customerId;
+		this.productCode = productCode;
+		this.productName = productName;
+		Quantity = quantity;
+	}
+
 	/**
 	 * @return the id
 	 */
