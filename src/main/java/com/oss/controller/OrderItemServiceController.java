@@ -16,7 +16,7 @@ import com.oss.api.OrderItem;
 import com.oss.service.IOrderItemService;
 
 @RestController
-@RequestMapping("/v1/OMS")
+@RequestMapping("/v1")
 public class OrderItemServiceController {
 
 	@Autowired

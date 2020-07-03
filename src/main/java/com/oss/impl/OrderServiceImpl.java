@@ -29,8 +29,9 @@ public class OrderServiceImpl implements IOrderService{
 	}
 	
 	@Override
-	public void postAllOrderDetails(List<Orders> orders){
+	public List<Orders> postAllOrderDetails(List<Orders> orders){
 		orders.forEach(order -> orderRepository.save(order));
+		return orders;
 	}
 
 }

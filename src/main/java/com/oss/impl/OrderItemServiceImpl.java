@@ -29,8 +29,9 @@ public class OrderItemServiceImpl implements IOrderItemService{
 	}
 
 	@Override
-	public void postOrderItemDetail(List<OrderItem> orderItems) {
-		orderItems.forEach(orderItem -> orderItemRepository.save(orderItem));	
+	public List<OrderItem> postOrderItemDetail(List<OrderItem> orderItems) {
+		orderItems.forEach(orderItem -> orderItemRepository.save(orderItem));
+		return orderItems;
 	}
 
 }

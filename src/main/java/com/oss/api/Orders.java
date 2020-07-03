@@ -30,6 +30,17 @@ public class Orders implements Serializable {
 	@Column
 	@NotNull
 	private Double total;
+	
+	public Orders() {}
+
+	public Orders(int customerId, String customerName, Date orderDate, String address, Double total) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.orderDate = orderDate;
+		this.address = address;
+		this.total = total;
+	}
 
 	/**
 	 * @return the customerId

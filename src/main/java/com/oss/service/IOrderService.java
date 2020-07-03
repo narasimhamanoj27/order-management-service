@@ -13,5 +13,5 @@ public interface IOrderService {
 
 	Orders getOrderDetail(int id);
 	
-	void postAllOrderDetails(List<Orders> orders);
+	List<Orders> postAllOrderDetails(List<Orders> orders);
 }
