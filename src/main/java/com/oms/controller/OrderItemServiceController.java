@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
+import com.oms.configuration.CustomException;
 import com.oms.constants.ErrorConstants;
-import com.oms.entity.CustomException;
 import com.oms.entity.OrderItem;
 import com.oms.service.IOrderItemService;
 

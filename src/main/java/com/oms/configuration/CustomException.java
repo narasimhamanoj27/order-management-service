@@ -1,4 +1,4 @@
-package com.oms.entity;
+package com.oms.configuration;
 
 import java.util.Arrays;
 import java.util.List;
