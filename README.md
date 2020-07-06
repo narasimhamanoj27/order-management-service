@@ -2,7 +2,7 @@
 Microservice for handling Orders and OrderItems  
 Version (0.0.1-SNAPSHOT)  
 Database (H2 Embedded DB)  
-Language (Spring Boot / Java8)  
+Language (Spring Boot / Java 11)  
 Unit Tests (Mockito / JUnit)  
 
 #### Build
