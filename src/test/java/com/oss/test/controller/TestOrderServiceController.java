@@ -29,6 +29,7 @@ public class TestOrderServiceController {
 	@InjectMocks
 	private OrderServiceController orderServiceController;
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testOrderServiceController_GETALL() {
 		Date date = new Date();
@@ -36,10 +37,10 @@ public class TestOrderServiceController {
 		Orders order = new Orders(1, "MALENA", new java.sql.Date(date.getTime()), "BUDAPEST", 10.30);
 		ordersListExpected.add(order);
 		Mockito.when(iOrderService.getAllOrderDetails()).thenReturn(ordersListExpected);
-		ResponseEntity<List<Orders>> responseEntity = orderServiceController.getAllOrders();
+		ResponseEntity<?> responseEntity = orderServiceController.getAllOrders();
 		assertNotNull(responseEntity);
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-		List<Orders> orderListActual = responseEntity.getBody();
+		List<Orders> orderListActual = (List<Orders>) responseEntity.getBody();
 		assertNotNull(orderListActual);
 		assertEquals(ordersListExpected.size(), orderListActual.size());
 	}

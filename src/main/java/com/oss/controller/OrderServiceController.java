@@ -1,6 +1,7 @@
 package com.oss.controller;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
 import com.oss.constants.ErrorConstants;
 import com.oss.entity.CustomException;
@@ -80,6 +82,16 @@ public class OrderServiceController {
 			CustomException customException = new CustomException(ex.getStatusCode(), ex.getMessage(),
 					"ORDER_DETAILS_NOT_FOUND");
 			return new ResponseEntity<>(customException, ex.getStatusCode());
+		} catch (InternalServerError ex) {
+			LOGGER.error("Failed to retrieve all the details from the DB", ex);
+			CustomException customException = new CustomException(ex.getStatusCode(), ex.getMessage(),
+					"ORDER_DETAILS_NOT_FOUND");
+			return new ResponseEntity<>(customException, ex.getStatusCode());
+		} catch (NoSuchElementException ex) {
+			LOGGER.error("Failed to retrieve all the details from the DB", ex);
+			CustomException customException = new CustomException(HttpStatus.NOT_FOUND, ex.getMessage(),
+					"ORDER_DETAILS_NOT_FOUND");
+			return new ResponseEntity<>(customException, HttpStatus.NOT_FOUND);
 		}
 
 		return new ResponseEntity<Orders>(order, HttpStatus.OK);
