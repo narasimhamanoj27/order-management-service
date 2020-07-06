@@ -23,6 +23,10 @@ import com.oss.entity.CustomException;
 import com.oss.entity.Orders;
 import com.oss.service.IOrderService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 /**
  * Order Service controller for GET-ALL / GET / POST functionalities
  * 
@@ -43,6 +47,12 @@ public class OrderServiceController {
 	 * 
 	 * @return ResponseEntity<List<Orders>>
 	 */
+	@ApiResponses(value = { @ApiResponse(message = "Successful response", code = 200, response = Orders.class),
+			@ApiResponse(message = "Not Found", code = 404),
+			@ApiResponse(message = "UnAuthorized", code = 401),
+			@ApiResponse(message = "Internal Server Error", code = 500),
+			@ApiResponse(message = "UnProcessable Entity", code = 422) })
+	@ApiOperation(value = "Operation to retrieve all Orders", notes = "Operation to retrieve all Orders")
 	@GetMapping("/order")
 	public ResponseEntity<?> getAllOrders() {
 		List<Orders> orders = null;
@@ -67,6 +77,12 @@ public class OrderServiceController {
 	 * @param id customerId
 	 * @return ResponseEntity<Orders>
 	 */
+	@ApiResponses(value = { @ApiResponse(message = "Successful response", code = 200, response = Orders.class),
+			@ApiResponse(message = "Not Found", code = 404),
+			@ApiResponse(message = "UnAuthorized", code = 401),
+			@ApiResponse(message = "Internal Server Error", code = 500),
+			@ApiResponse(message = "UnProcessable Entity", code = 422) })
+	@ApiOperation(value = "Operation to retrieve an Order by customer ID", notes = "Operation to retrieve an Order by customer ID")
 	@GetMapping("/order/{id}")
 	public ResponseEntity<?> getOrder(@PathVariable("id") final int id) {
 		Orders order = null;
@@ -103,6 +119,12 @@ public class OrderServiceController {
 	 * @param orders
 	 * @return ResponseEntity<?>
 	 */
+	@ApiResponses(value = { @ApiResponse(message = "Successful response", code = 200),
+			@ApiResponse(message = "Not Found", code = 404),
+			@ApiResponse(message = "UnAuthorized", code = 401),
+			@ApiResponse(message = "Internal Server Error", code = 500),
+			@ApiResponse(message = "UnProcessable Entity", code = 422) })
+	@ApiOperation(value = "Operation to save an Order into H2", notes = "Operation to save an Order into H2")
 	@PostMapping("/order")
 	public ResponseEntity<?> postAllOrders(@RequestBody List<Orders> orders) {
 

@@ -23,6 +23,10 @@ import com.oss.entity.CustomException;
 import com.oss.entity.OrderItem;
 import com.oss.service.IOrderItemService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 /**
  * Order Item Service controller for GET-ALL / GET / POST functionalities
  * 
@@ -43,6 +47,12 @@ public class OrderItemServiceController {
 	 * 
 	 * @return ResponseEntity<List<OrderItem>>
 	 */
+	@ApiResponses(value = { @ApiResponse(message = "Successful response", code = 200, response = OrderItem.class),
+			@ApiResponse(message = "Not Found", code = 404),
+			@ApiResponse(message = "UnAuthorized", code = 401),
+			@ApiResponse(message = "Internal Server Error", code = 500),
+			@ApiResponse(message = "UnProcessable Entity", code = 422) })
+	@ApiOperation(value = "Operation to retrieve all the Order Items", notes = "Operation to retrieve all the Order Items")
 	@GetMapping("/orderItem")
 	public ResponseEntity<?> getAllOrderItems() {
 
@@ -72,6 +82,12 @@ public class OrderItemServiceController {
 	 * @param id customerId
 	 * @return ResponseEntity<OrderItem>
 	 */
+	@ApiResponses(value = { @ApiResponse(message = "Successful response", code = 200, response = OrderItem.class),
+			@ApiResponse(message = "Not Found", code = 404),
+			@ApiResponse(message = "UnAuthorized", code = 401),
+			@ApiResponse(message = "Internal Server Error", code = 500),
+			@ApiResponse(message = "UnProcessable Entity", code = 422) })
+	@ApiOperation(value = "Operation to retrieve an Order Item by customer ID", notes = "Operation to retrieve an Order Item by customer ID")
 	@GetMapping("/orderItem/{id}")
 	public ResponseEntity<?> getOrderItem(@PathVariable("id") final int id) {
 
@@ -100,13 +116,19 @@ public class OrderItemServiceController {
 		}
 		return new ResponseEntity<>(orderItem, HttpStatus.OK);
 	}
-	
+
 	/**
 	 * Controller for saving a new record of OrderItem in the H2 DB
 	 * 
 	 * @param orderItem
 	 * @return ResponseEntity<?>
 	 */
+	@ApiResponses(value = { @ApiResponse(message = "Successful response", code = 200),
+			@ApiResponse(message = "Not Found", code = 404),
+			@ApiResponse(message = "UnAuthorized", code = 401),
+			@ApiResponse(message = "Internal Server Error", code = 500),
+			@ApiResponse(message = "UnProcessable Entity", code = 422) })
+	@ApiOperation(value = "Operation to save an Order Item into H2", notes = "Operation to save an Order Item into H2")
 	@PostMapping("/orderItem")
 	public ResponseEntity<?> postOrderItem(@RequestBody List<OrderItem> orderItem) {
 
