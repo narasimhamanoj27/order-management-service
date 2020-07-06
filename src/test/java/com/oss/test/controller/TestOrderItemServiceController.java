@@ -27,16 +27,17 @@ public class TestOrderItemServiceController {
 	@InjectMocks
 	private OrderItemServiceController orderItemServiceController;
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testOrderItemServiceController_GetAll() {
 		OrderItem orderItem = new OrderItem(1, "GGG", "Scales", 40);
 		List<OrderItem> orderItemList = new ArrayList<>();
 		orderItemList.add(orderItem);
 		Mockito.when(iOrderItemService.getAllOrderItems()).thenReturn(orderItemList);
-		ResponseEntity<List<OrderItem>> responseEntity = orderItemServiceController.getAllOrderItems();
+		ResponseEntity<?> responseEntity = orderItemServiceController.getAllOrderItems();
 		assertNotNull(responseEntity);
 		assertNotNull(responseEntity.getBody());
-		List<OrderItem> orderItemListActual = responseEntity.getBody();
+		List<OrderItem> orderItemListActual = (List<OrderItem>) responseEntity.getBody();
 		assertEquals(orderItemList.size(), orderItemListActual.size());
 	}
 	
@@ -44,10 +45,10 @@ public class TestOrderItemServiceController {
 	public void testOrderItemServiceController_GetByID() {
 		OrderItem orderItem = new OrderItem(1, "GGG", "Scales", 40);
 		Mockito.when(iOrderItemService.getOrderItemDetail(1)).thenReturn(orderItem);
-		ResponseEntity<OrderItem> responseEntity = orderItemServiceController.getOrderItem(1);
+		ResponseEntity<?> responseEntity = orderItemServiceController.getOrderItem(1);
 		assertNotNull(responseEntity);
 		assertNotNull(responseEntity.getBody());
-		OrderItem orderItemActual = responseEntity.getBody();
+		OrderItem orderItemActual = (OrderItem) responseEntity.getBody();
 		assertEquals(orderItem, orderItemActual);
 	}
 	

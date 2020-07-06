@@ -50,9 +50,9 @@ public class TestOrderServiceController {
 		Date date = new Date();
 		Orders order = new Orders(1, "MALENA", new java.sql.Date(date.getTime()), "BUDAPEST", 10.30);
 		Mockito.when(iOrderService.getOrderDetail(1)).thenReturn(order);
-		ResponseEntity<Orders> responseEntity = orderServiceController.getOrder(1);
+		ResponseEntity<?> responseEntity = orderServiceController.getOrder(1);
 		assertNotNull(responseEntity);
-		Orders orderActual = responseEntity.getBody();
+		Orders orderActual = (Orders) responseEntity.getBody();
 		assertEquals(order, orderActual);
 	}
 	
