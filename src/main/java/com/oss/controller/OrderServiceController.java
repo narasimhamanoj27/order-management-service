@@ -1,6 +1,7 @@
 package com.oss.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,17 +14,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
 
-import com.oss.api.Orders;
+import com.oss.constants.ErrorConstants;
+import com.oss.entity.CustomException;
+import com.oss.entity.Orders;
 import com.oss.service.IOrderService;
 
 /**
  * Order Service controller for GET-ALL / GET / POST functionalities
+ * 
  * @author manoj
  *
  */
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/order-service")
 public class OrderServiceController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceController.class);
@@ -33,33 +38,48 @@ public class OrderServiceController {
 
 	/**
 	 * Controller for retrieving all the Order details from the database
+	 * 
 	 * @return ResponseEntity<List<Orders>>
 	 */
 	@GetMapping("/order")
-	public ResponseEntity<List<Orders>> getAllOrders() {
+	public ResponseEntity<?> getAllOrders() {
 		List<Orders> orders = null;
 		try {
 			orders = iOrderService.getAllOrderDetails();
-		} catch (Exception ex) {
+			if (orders.size() <= 0) {
+				throw new HttpClientErrorException(HttpStatus.NOT_FOUND, ErrorConstants.LIST_NOT_FOUND);
+			}
+		} catch (HttpClientErrorException ex) {
 			LOGGER.error("Failed to retrieve all the details from the DB", ex);
+			CustomException customException = new CustomException(ex.getStatusCode(), ex.getMessage(),
+					"ORDER_DETAILS_NOT_FOUND");
+			return new ResponseEntity<>(customException, ex.getStatusCode());
 		}
 
-		return new ResponseEntity<List<Orders>>(orders, HttpStatus.OK);
+		return new ResponseEntity<>(orders, HttpStatus.OK);
 	}
 
 	/**
 	 * Controller for retrieving Order details based on customer Id
+	 * 
 	 * @param id customerId
 	 * @return ResponseEntity<Orders>
 	 */
 	@GetMapping("/order/{id}")
-	public ResponseEntity<Orders> getOrder(@PathVariable("id") final int id) {
+	public ResponseEntity<?> getOrder(@PathVariable("id") final int id) {
 		Orders order = null;
 
 		try {
 			order = iOrderService.getOrderDetail(id);
-		} catch (Exception ex) {
+			Optional<Orders> optionalOrder = Optional.ofNullable(order);
+			if (!optionalOrder.isPresent()) {
+				throw new HttpClientErrorException(HttpStatus.NOT_FOUND, ErrorConstants.ORDER_NOT_FOUND);
+			}
+		} catch (HttpClientErrorException ex) {
 			LOGGER.error("Failed to retrieve all the details from the DB", ex);
+			CustomException customException = new CustomException(ex.getStatusCode(), ex.getMessage(),
+					"ORDER_DETAILS_NOT_FOUND");
+			return new ResponseEntity<>(customException, ex.getStatusCode());
 		}
 
 		return new ResponseEntity<Orders>(order, HttpStatus.OK);
@@ -67,6 +87,7 @@ public class OrderServiceController {
 
 	/**
 	 * Controller for saving a new record of Order details into H2 DB
+	 * 
 	 * @param orders
 	 * @return ResponseEntity<?>
 	 */
@@ -76,7 +97,10 @@ public class OrderServiceController {
 		try {
 			iOrderService.postAllOrderDetails(orders);
 		} catch (Exception ex) {
+			// No need to worry about PrimaryKey and Existing records, CRUDRepository will
+			// do INSERT/UPDATE
 			LOGGER.error("Failed to save the order details from the DB", ex);
+			return new ResponseEntity<>(ex, HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 
 		return new ResponseEntity<>(HttpStatus.OK);

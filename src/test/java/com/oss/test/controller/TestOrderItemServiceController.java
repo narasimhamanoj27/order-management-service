@@ -1,11 +1,8 @@
 package com.oss.test.controller;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.oss.controller.OrderItemServiceController;
+import com.oss.entity.OrderItem;
+import com.oss.service.IOrderItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,9 +12,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.oss.api.OrderItem;
-import com.oss.controller.OrderItemServiceController;
-import com.oss.service.IOrderItemService;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestOrderItemServiceController {

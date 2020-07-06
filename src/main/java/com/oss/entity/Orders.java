@@ -1,13 +1,12 @@
-package com.oss.api;
+package com.oss.entity;
 
-import java.io.Serializable;
-import java.sql.Date;
+import com.sun.istack.NotNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-import com.sun.istack.NotNull;
+import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 public class Orders implements Serializable {

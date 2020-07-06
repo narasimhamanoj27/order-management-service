@@ -1,14 +1,13 @@
 package com.oss.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.oss.entity.Orders;
+import com.oss.repository.OrderRepository;
+import com.oss.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.oss.api.Orders;
-import com.oss.repository.OrderRepository;
-import com.oss.service.IOrderService;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OrderServiceImpl implements IOrderService{

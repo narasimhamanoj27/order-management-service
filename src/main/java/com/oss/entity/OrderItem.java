@@ -1,12 +1,11 @@
-package com.oss.api;
+package com.oss.entity;
 
-import java.io.Serializable;
+import com.sun.istack.NotNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-import com.sun.istack.NotNull;
+import java.io.Serializable;
 
 @Entity
 public class OrderItem implements Serializable {

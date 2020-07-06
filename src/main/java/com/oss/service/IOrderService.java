@@ -1,10 +1,10 @@
 package com.oss.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
-import com.oss.api.Orders;
+import com.oss.entity.Orders;
+
+import java.util.List;
 
 @Component
 public interface IOrderService {
