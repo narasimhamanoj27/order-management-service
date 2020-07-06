@@ -1,9 +1,9 @@
-package com.oss.repository;
+package com.oms.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.oss.entity.OrderItem;
+import com.oms.entity.OrderItem;
 
 /**
  * Repository for performing CRUD operations on OrderItem POJO

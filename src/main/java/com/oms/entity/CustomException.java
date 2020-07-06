@@ -1,4 +1,4 @@
-package com.oss.entity;
+package com.oms.entity;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.oss.service;
+package com.oms.service;
 
 import org.springframework.stereotype.Component;
 
-import com.oss.entity.OrderItem;
+import com.oms.entity.OrderItem;
 
 import java.util.List;
 

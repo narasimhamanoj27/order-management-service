@@ -1,4 +1,4 @@
-package com.oss.controller;
+package com.oms.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
-import com.oss.constants.ErrorConstants;
-import com.oss.entity.CustomException;
-import com.oss.entity.Orders;
-import com.oss.service.IOrderService;
+import com.oms.constants.ErrorConstants;
+import com.oms.entity.CustomException;
+import com.oms.entity.Orders;
+import com.oms.service.IOrderService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

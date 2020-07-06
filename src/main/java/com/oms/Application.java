@@ -1,4 +1,4 @@
-package com.oss;
+package com.oms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

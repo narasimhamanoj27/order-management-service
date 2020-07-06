@@ -1,8 +1,5 @@
 package com.oss.test.service;
 
-import com.oss.entity.OrderItem;
-import com.oss.impl.OrderItemServiceImpl;
-import com.oss.repository.OrderItemRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +8,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import com.oms.entity.OrderItem;
+import com.oms.impl.OrderItemServiceImpl;
+import com.oms.repository.OrderItemRepository;
 
 import java.util.ArrayList;
 import java.util.List;

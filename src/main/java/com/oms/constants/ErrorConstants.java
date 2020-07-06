@@ -1,4 +1,4 @@
-package com.oss.constants;
+package com.oms.constants;
 
 public class ErrorConstants {
 	
