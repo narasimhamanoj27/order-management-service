@@ -9,9 +9,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.oms.entity.Orders;
-import com.oms.impl.OrderServiceImpl;
-import com.oms.repository.OrderRepository;
+import com.order.entity.OrderItem;
+import com.order.entity.Orders;
+import com.order.impl.OrderServiceImpl;
+import com.order.repository.OrderRepository;
 
 import java.util.*;
 
@@ -38,7 +39,7 @@ public class TestOrderService {
 	@Test
 	public void testPostOrderService() {
 		Date date = new Date();
-		Orders orders = new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20);
+		Orders orders = new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20, new ArrayList<OrderItem>());
 		List<Orders> orderList = new ArrayList<Orders>();
 		orderList.add(orders);
 		Mockito.when(orderRepositoryMock.save(orderList.get(0))).thenReturn(orders);
@@ -51,7 +52,7 @@ public class TestOrderService {
 	public void testGetOrdersServiceByID() {
 		Date date = new Date();
 		Optional<Orders> ordersOptional = Optional
-				.ofNullable(new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20));
+				.ofNullable(new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20, new ArrayList<OrderItem>()));
 		Mockito.when(orderRepositoryMock.findById(1)).thenReturn(ordersOptional);
 		Orders ordersActual = orderServiceImpl.getOrderDetail(1);
 		assertNotNull(ordersActual);
@@ -61,7 +62,7 @@ public class TestOrderService {
 	@Test
 	public void testGetAllOrdersService() {
 		Date date = new Date();
-		Orders orders = new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20);
+		Orders orders = new Orders(1, "ISHU", new java.sql.Date(date.getTime()), "Hitech City", 30.20, new ArrayList<OrderItem>());
 		List<Orders> orderList = new ArrayList<Orders>();
 		orderList.add(orders);
 		Mockito.when(orderRepositoryMock.findAll()).thenReturn(orderList);

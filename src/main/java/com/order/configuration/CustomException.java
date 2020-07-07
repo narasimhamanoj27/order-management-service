@@ -1,4 +1,4 @@
-package com.oms.configuration;
+package com.order.configuration;
 
 import java.util.Arrays;
 import java.util.List;

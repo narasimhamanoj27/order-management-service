@@ -1,11 +1,11 @@
-package com.oms.impl;
+package com.order.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.oms.entity.Orders;
-import com.oms.repository.OrderRepository;
-import com.oms.service.IOrderService;
+import com.order.entity.Orders;
+import com.order.repository.OrderRepository;
+import com.order.service.IOrderService;
 
 import java.util.ArrayList;
 import java.util.List;
