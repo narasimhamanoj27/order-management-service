@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.order.entity.OrderItem;
 
@@ -18,7 +17,4 @@ public interface CustomFeignClient {
 	@GetMapping("/orderItem/{id}")
 	List<OrderItem> getOrderItem(@PathVariable(value = "id") final int id);
 	
-	@PostMapping("/orderitem")
-	List<OrderItem> postOrderItem(List<OrderItem> orderItems);
-
 }
